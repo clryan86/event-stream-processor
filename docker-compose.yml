@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      DATABASE_PATH: /app/data/events.db
+      MAX_ATTEMPTS: 3
+    volumes:
+      - event_data:/app/data
+volumes:
+  event_data:

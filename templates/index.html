@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block content %}
+<section class="hero"><p class="eyebrow">Event-driven systems portfolio</p><h1>Publish. Consume. Retry. Recover.</h1><p class="lead">A durable local event stream with idempotent producers, typed handlers, retry state, delivery history, dead-letter isolation and replay.</p></section>
+<section class="metrics"><div><strong>{{metrics.total}}</strong><span>Total</span></div><div><strong>{{metrics.pending}}</strong><span>Pending</span></div><div><strong>{{metrics.processed}}</strong><span>Processed</span></div><div><strong>{{metrics.dead_letter}}</strong><span>Dead letter</span></div></section>
+<section class="panel"><h2>Recent events</h2><table><thead><tr><th>ID</th><th>Type</th><th>Status</th><th>Attempts</th></tr></thead><tbody>{% for e in events %}<tr><td>{{e.id[:8]}}</td><td>{{e.event_type}}</td><td><span class="pill {{e.status|lower}}">{{e.status}}</span></td><td>{{e.attempts}}</td></tr>{% else %}<tr><td colspan="4" class="muted">No events yet.</td></tr>{% endfor %}</tbody></table></section>
+{% endblock %}
